@@ -77,18 +77,18 @@ namespace MyPhoto
                 int largura = imagemPretoBranco.Width;
                 int altura = imagemPretoBranco.Height;
 
-                Color p;
+                Color pixel;
 
                 for (int y = 0; y < altura; y++)
                 {
                     for (int x = 0; x < largura; x++)
                     {
-                        p = imagemPretoBranco.GetPixel(x, y);
+                        pixel = imagemPretoBranco.GetPixel(x, y);
 
-                        int a = p.A;
-                        int r = p.R;
-                        int g = p.G;
-                        int b = p.B;
+                        int a = pixel.A;
+                        int r = pixel.R;
+                        int g = pixel.G;
+                        int b = pixel.B;
 
                         int avg = (r + g + b) / 3;
 
@@ -118,12 +118,12 @@ namespace MyPhoto
                 {
                     for (int x = 0; x < largura; x++)
                     {
-                        Color p = imagemNegativo.GetPixel(x, y);
+                        Color pixel = imagemNegativo.GetPixel(x, y);
 
-                        int a = p.A;
-                        int r = p.R;
-                        int g = p.G;
-                        int b = p.B;
+                        int a = pixel.A;
+                        int r = pixel.R;
+                        int g = pixel.G;
+                        int b = pixel.B;
 
                         r = 255 - r;
                         g = 255 - g;
@@ -154,26 +154,8 @@ namespace MyPhoto
             else
             {
                 Bitmap imagemBlur = new Bitmap(imagemOriginal.Image);
+                
 
-                int largura = imagemBlur.Width;
-                int altura = imagemBlur.Height;
-
-                for (int y = 0; y < altura; y++)
-                {
-                    for (int x = 0; x < largura; x++)
-                    {
-                        Color ultimoX = imagemBlur.GetPixel(x - 1, y);
-                        Color proximoX = imagemBlur.GetPixel(x + 1, y);
-                        Color ultimoY = imagemBlur.GetPixel(x, y - 1);
-                        Color proximoY = imagemBlur.GetPixel(x, y + 1);
-
-                        int avgR = (int)((ultimoY.R + proximoY.R + ultimoX.R + proximoX.R) / 4);
-                        int avgG = (int)((ultimoY.G + proximoY.G + ultimoX.G + proximoX.G) / 4);
-                        int avgB = (int)((ultimoY.B + proximoY.B + ultimoX.B + proximoX.B) / 4);
-
-                        imagemBlur.SetPixel(x, x, Color.FromArgb(avgR, avgG, avgB));
-                    }
-                }
 
                 imagemEditada.Image = imagemBlur;
             }
@@ -193,18 +175,18 @@ namespace MyPhoto
                 int largura = imagemSepia.Width;
                 int altura = imagemSepia.Height;
 
-                Color p;
+                Color pixel;
 
                 for (int y = 0; y < altura; y++)
                 {
                     for (int x = 0; x < largura; x++)
                     {
-                        p = imagemSepia.GetPixel(x, y);
+                        pixel = imagemSepia.GetPixel(x, y);
 
-                        int a = p.A;
-                        int r = p.R;
-                        int g = p.G;
-                        int b = p.B;
+                        int a = pixel.A;
+                        int r = pixel.R;
+                        int g = pixel.G;
+                        int b = pixel.B;
 
                         int tr = (int)(0.393 * r + 0.769 * g + 0.189 * b);
                         int tg = (int)(0.349 * r + 0.686 * g + 0.168 * b);
