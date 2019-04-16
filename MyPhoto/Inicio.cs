@@ -137,17 +137,39 @@ namespace MyPhoto
             }
         }
 
-        /*
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
-         *  AQUI VAI FICAR A PARTE DO BLUR QUE O AMILTO ESTÁ FINALIZANDO
+        /* 
+         * ESTÁ DANDO ERRO NO BLUR
+         * ESTÁ DANDO ERRO NO BLUR
+         * ESTÁ DANDO ERRO NO BLUR
+         * ESTÁ DANDO ERRO NO BLUR
          */
+
+        private void OpcaoBlur_Click(object sender, EventArgs e)
+        {
+            Bitmap imagemBlur = new Bitmap(imagemOriginal.Image);
+
+            int largura = imagemBlur.Width;
+            int altura = imagemBlur.Height;
+
+            for (int y = 0; y < altura; y++)
+            {
+                for (int x = 0; x < largura; x++)
+                {
+                    Color prevY = imagemBlur.GetPixel(y - 1, x);
+                    Color nextY = imagemBlur.GetPixel(y + 1, x);
+                    Color prevX = imagemBlur.GetPixel(y, x - 1);
+                    Color nextX = imagemBlur.GetPixel(y, x + 1);
+
+                    int avgR = (int)((prevY.R + nextY.R + prevX.R + nextX.R) / 4);
+                    int avgG = (int)((prevY.G + nextY.G + prevX.G + nextX.G) / 4);
+                    int avgB = (int)((prevY.B + nextY.B + prevX.B + nextX.B) / 4);
+
+                    imagemBlur.SetPixel(x, x, Color.FromArgb(avgR, avgG, avgB));
+                }
+            }
+
+            imagemEditada.Image = imagemBlur;
+        }
 
         private void OpcaoSepia_Click(object sender, EventArgs e)
         {
@@ -271,6 +293,35 @@ namespace MyPhoto
             }
         }
 
+        private void EasterEgg_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (imagemOriginal.Image == null)
+            {
+                MessageBox.Show("Você não importou uma imagem.");
+            }
+
+            else
+            {
+                Bitmap imagemFundo = new Bitmap(imagemOriginal.Image);
+                Bitmap efeitoPascoa = new Bitmap(@"../../Imagens/molduraPascoa.png");
+                Bitmap imagemPascoa = new Bitmap(imagemFundo.Width, imagemFundo.Height);
+                Bitmap efeitoPascoaAjustado = new Bitmap(efeitoPascoa, new Size(imagemFundo.Width, imagemFundo.Height));
+
+                using (Graphics gr = Graphics.FromImage(imagemPascoa))
+                {
+                    gr.DrawImage(imagemFundo, new Point(0, 0));
+                    gr.DrawImage(efeitoPascoaAjustado, new Point(0, 0));
+                }
+
+                imagemEditada.Image = imagemPascoa;
+            }
+        }
+
+        private void EasterEgg_MouseClick(object sender, MouseEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.microsoft.com");
+        }
+
         private void OpcaoSalvar_Click(object sender, EventArgs e)
         {
             if (imagemOriginal.Image == null)
@@ -296,28 +347,6 @@ namespace MyPhoto
             }
         }
 
-        private void EasterEgg_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (imagemOriginal.Image == null)
-            {
-                MessageBox.Show("Você não importou uma imagem.");
-            }
-
-            else
-            {
-                Bitmap imagemFundo = new Bitmap(imagemOriginal.Image);
-                Bitmap efeitoPascoa = new Bitmap(@"../../Imagens/molduraPascoa.png");
-                Bitmap imagemPascoa = new Bitmap(imagemFundo.Width, imagemFundo.Height);
-                Bitmap efeitoPascoaAjustado = new Bitmap(efeitoPascoa, new Size(imagemFundo.Width, imagemFundo.Height));
-
-                using (Graphics gr = Graphics.FromImage(imagemPascoa))
-                {
-                    gr.DrawImage(imagemFundo, new Point(0, 0));
-                    gr.DrawImage(efeitoPascoaAjustado, new Point(0, 0));
-                }
-
-                imagemEditada.Image = imagemPascoa;
-            }
-        }
+        
     }
 }

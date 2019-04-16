@@ -183,6 +183,7 @@
             this.opcaoBlur.TabIndex = 13;
             this.opcaoBlur.Text = "Blur";
             this.opcaoBlur.UseVisualStyleBackColor = true;
+            this.opcaoBlur.Click += new System.EventHandler(this.OpcaoBlur_Click);
             // 
             // easterEgg
             // 
@@ -193,6 +194,7 @@
             this.easterEgg.TabIndex = 15;
             this.easterEgg.TabStop = true;
             this.easterEgg.Text = "Copyright © 2019 Mygle Company - Todos os direitos reservados";
+            this.easterEgg.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EasterEgg_MouseClick);
             this.easterEgg.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.EasterEgg_MouseDoubleClick);
             // 
             // MyPhoto
