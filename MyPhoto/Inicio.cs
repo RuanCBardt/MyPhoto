@@ -162,14 +162,14 @@ namespace MyPhoto
                 {
                     for (int x = 0; x < largura; x++)
                     {
-                        Color prevY = imagemBlur.GetPixel(y - 1, x);
-                        Color nextY = imagemBlur.GetPixel(y + 1, x);
-                        Color prevX = imagemBlur.GetPixel(y, x - 1);
-                        Color nextX = imagemBlur.GetPixel(y, x + 1);
+                        Color ultimoX = imagemBlur.GetPixel(x - 1, y);
+                        Color proximoX = imagemBlur.GetPixel(x + 1, y);
+                        Color ultimoY = imagemBlur.GetPixel(x, y - 1);
+                        Color proximoY = imagemBlur.GetPixel(x, y + 1);
 
-                        int avgR = (int)((prevY.R + nextY.R + prevX.R + nextX.R) / 4);
-                        int avgG = (int)((prevY.G + nextY.G + prevX.G + nextX.G) / 4);
-                        int avgB = (int)((prevY.B + nextY.B + prevX.B + nextX.B) / 4);
+                        int avgR = (int)((ultimoY.R + proximoY.R + ultimoX.R + proximoX.R) / 4);
+                        int avgG = (int)((ultimoY.G + proximoY.G + ultimoX.G + proximoX.G) / 4);
+                        int avgB = (int)((ultimoY.B + proximoY.B + ultimoX.B + proximoX.B) / 4);
 
                         imagemBlur.SetPixel(x, x, Color.FromArgb(avgR, avgG, avgB));
                     }
@@ -354,7 +354,5 @@ namespace MyPhoto
                 }
             }
         }
-
-        
     }
 }
