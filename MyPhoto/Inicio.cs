@@ -125,6 +125,65 @@ namespace MyPhoto
             imagemEditada.Image = imagemPretoBranco;
         }
 
+        private void OpcaoNegativo_Click(object sender, EventArgs e)
+        {
+            Bitmap imagemNegativo = new Bitmap(imagemOriginal.Image);
+
+            int largura = imagemNegativo.Width;
+            int altura = imagemNegativo.Height;
+
+            for (int y = 0; y < altura; y++)
+            {
+                for (int x = 0; x < largura; x++)
+                {
+                    Color p = imagemNegativo.GetPixel(x, y);
+
+                    int a = p.A;
+                    int r = p.R;
+                    int g = p.G;
+                    int b = p.B;
+
+                    r = 255 - r;
+                    g = 255 - g;
+                    b = 255 - b;
+
+                    imagemNegativo.SetPixel(x, y, Color.FromArgb(a, r, g, b));
+                }
+            }
+
+            imagemEditada.Image = imagemNegativo;
+        }
+
+        private void OpcaoEspelhar_Click(object sender, EventArgs e)
+        {
+            Bitmap imagemEspelhar = new Bitmap(imagemOriginal.Image);
+
+            int largura = imagemEspelhar.Width;
+            int altura = imagemEspelhar.Height;
+
+            Bitmap imagemInvertida = new Bitmap(largura * 2, altura);
+
+            for (int y = 0; y < altura; y++)
+            {
+                for (int lx = 0, rx = largura * 2 - 1; lx < largura; lx++, rx--)
+                {
+                    Color p = imagemEspelhar.GetPixel(lx, y);
+
+                    imagemInvertida.SetPixel(lx, y, p);
+                    imagemInvertida.SetPixel(rx, y, p);
+                }
+            }
+
+            imagemEditada.Image = imagemInvertida;
+        }
+
+
+
+
+
+
+
+
         private void OpcaoSalvar_Click(object sender, EventArgs e)
         {
             SaveFileDialog salvarfoto = new SaveFileDialog();
@@ -136,5 +195,7 @@ namespace MyPhoto
                 imagemEditada.Image.Save(salvarfoto.FileName);
             }
         }
+
+        
     }
 }

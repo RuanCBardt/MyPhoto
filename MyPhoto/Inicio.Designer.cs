@@ -32,7 +32,7 @@
             this.imagemEditada = new System.Windows.Forms.PictureBox();
             this.opcaoPretoBranco = new System.Windows.Forms.Button();
             this.opcaoSepia = new System.Windows.Forms.Button();
-            this.opcaoPixelizado = new System.Windows.Forms.Button();
+            this.opcaoEspelhar = new System.Windows.Forms.Button();
             this.opcaoNegativo = new System.Windows.Forms.Button();
             this.opcao4Cores = new System.Windows.Forms.Button();
             this.opcaoImportar = new System.Windows.Forms.Button();
@@ -82,14 +82,15 @@
             this.opcaoSepia.UseVisualStyleBackColor = true;
             this.opcaoSepia.Click += new System.EventHandler(this.OpcaoSepia_Click);
             // 
-            // opcaoPixelizado
+            // opcaoEspelhar
             // 
-            this.opcaoPixelizado.Location = new System.Drawing.Point(414, 117);
-            this.opcaoPixelizado.Name = "opcaoPixelizado";
-            this.opcaoPixelizado.Size = new System.Drawing.Size(90, 29);
-            this.opcaoPixelizado.TabIndex = 5;
-            this.opcaoPixelizado.Text = "Pixelizado";
-            this.opcaoPixelizado.UseVisualStyleBackColor = true;
+            this.opcaoEspelhar.Location = new System.Drawing.Point(414, 117);
+            this.opcaoEspelhar.Name = "opcaoEspelhar";
+            this.opcaoEspelhar.Size = new System.Drawing.Size(90, 29);
+            this.opcaoEspelhar.TabIndex = 5;
+            this.opcaoEspelhar.Text = "Espelhar";
+            this.opcaoEspelhar.UseVisualStyleBackColor = true;
+            this.opcaoEspelhar.Click += new System.EventHandler(this.OpcaoEspelhar_Click);
             // 
             // opcaoNegativo
             // 
@@ -99,6 +100,7 @@
             this.opcaoNegativo.TabIndex = 4;
             this.opcaoNegativo.Text = "Negativo";
             this.opcaoNegativo.UseVisualStyleBackColor = true;
+            this.opcaoNegativo.Click += new System.EventHandler(this.OpcaoNegativo_Click);
             // 
             // opcao4Cores
             // 
@@ -170,7 +172,7 @@
             this.Controls.Add(this.opcaoImportar);
             this.Controls.Add(this.opcaoSalvar);
             this.Controls.Add(this.opcao4Cores);
-            this.Controls.Add(this.opcaoPixelizado);
+            this.Controls.Add(this.opcaoEspelhar);
             this.Controls.Add(this.opcaoNegativo);
             this.Controls.Add(this.opcaoSepia);
             this.Controls.Add(this.opcaoPretoBranco);
@@ -191,7 +193,7 @@
         private System.Windows.Forms.PictureBox imagemEditada;
         private System.Windows.Forms.Button opcaoPretoBranco;
         private System.Windows.Forms.Button opcaoSepia;
-        private System.Windows.Forms.Button opcaoPixelizado;
+        private System.Windows.Forms.Button opcaoEspelhar;
         private System.Windows.Forms.Button opcaoNegativo;
         private System.Windows.Forms.Button opcao4Cores;
         private System.Windows.Forms.Button opcaoImportar;
