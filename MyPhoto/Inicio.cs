@@ -226,7 +226,7 @@ namespace MyPhoto
             else
             {
                 Bitmap imagemFundo = new Bitmap(imagemOriginal.Image);
-                Bitmap efeitoEnvelhecido = new Bitmap("C:\\Users\\rcbardt\\Desktop\\MyPhoto\\MyPhoto\\MyPhoto\\layerEnvelhecido.png");
+                Bitmap efeitoEnvelhecido = new Bitmap(@"../../Imagens/layerEnvelhecido.png");
                 Bitmap imagemEnvelhecida = new Bitmap(imagemFundo.Width, imagemFundo.Height);
                 Bitmap efeitoEnvelhecidoAjustado = new Bitmap(efeitoEnvelhecido, new Size(imagemFundo.Width, imagemFundo.Height));
 
