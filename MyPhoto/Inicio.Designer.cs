@@ -178,7 +178,6 @@
             this.Controls.Add(this.imagemOriginal);
             this.Name = "MyPhoto";
             this.Text = "MyPhoto";
-            this.Load += new System.EventHandler(this.MyPhoto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imagemOriginal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagemEditada)).EndInit();
             this.ResumeLayout(false);

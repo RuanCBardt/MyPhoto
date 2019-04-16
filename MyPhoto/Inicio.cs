@@ -18,16 +18,6 @@ namespace MyPhoto
             InitializeComponent();
         }
 
-        private void MyPhoto_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void OpcaoImportar_Click(object sender, EventArgs e)
         {
             OpenFileDialog importarfoto = new OpenFileDialog();
@@ -52,8 +42,8 @@ namespace MyPhoto
         {
             Bitmap imagemSepia = new Bitmap(imagemOriginal.Image);
 
-            int largura = imagemOriginal.Width;
-            int altura = imagemOriginal.Height;
+            int largura = imagemSepia.Width;
+            int altura = imagemSepia.Height;
 
             Color p;
 
@@ -108,9 +98,32 @@ namespace MyPhoto
 
         private void OpcaoPretoBranco_Click(object sender, EventArgs e)
         {
+            Bitmap imagemPretoBranco = new Bitmap(imagemOriginal.Image);
 
+            int largura = imagemPretoBranco.Width;
+            int altura = imagemPretoBranco.Height;
+
+            Color p;
+
+            for (int y = 0; y < altura; y++)
+            {
+                for (int x = 0; x < largura; x++)
+                {
+                    p = imagemPretoBranco.GetPixel(x, y);
+
+                    int a = p.A;
+                    int r = p.R;
+                    int g = p.G;
+                    int b = p.B;
+
+                    int avg = (r + g + b) / 3;
+
+                    imagemPretoBranco.SetPixel(x, y, Color.FromArgb(a, avg, avg, avg));
+                }
+            }
+
+            imagemEditada.Image = imagemPretoBranco;
         }
-
 
         private void OpcaoSalvar_Click(object sender, EventArgs e)
         {
