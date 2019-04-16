@@ -177,7 +177,21 @@ namespace MyPhoto
             imagemEditada.Image = imagemInvertida;
         }
 
+        private void OpcaoEnvelhecido_Click(object sender, EventArgs e)
+        {
+            Bitmap imagemFundo = new Bitmap (imagemOriginal.Image);
+            Bitmap efeitoEnvelhecido = new Bitmap("C:\\Users\\rcbardt\\Desktop\\MyPhoto\\MyPhoto\\MyPhoto\\layerEnvelhecido.png");
+            Bitmap imagemEnvelhecida = new Bitmap(imagemFundo.Width, imagemFundo.Height);
+            Bitmap efeitoEnvelhecidoAjustado = new Bitmap(efeitoEnvelhecido, new Size(imagemFundo.Width, imagemFundo.Height));
 
+            using (Graphics gr = Graphics.FromImage(imagemEnvelhecida))
+            {
+                gr.DrawImage(imagemFundo, new Point(0, 0));
+                gr.DrawImage(efeitoEnvelhecidoAjustado, new Point(0, 0));
+            }
+
+            imagemEditada.Image = imagemEnvelhecida;
+        }
 
 
 

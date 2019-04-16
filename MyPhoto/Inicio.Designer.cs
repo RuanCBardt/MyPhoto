@@ -34,7 +34,7 @@
             this.opcaoSepia = new System.Windows.Forms.Button();
             this.opcaoEspelhar = new System.Windows.Forms.Button();
             this.opcaoNegativo = new System.Windows.Forms.Button();
-            this.opcao4Cores = new System.Windows.Forms.Button();
+            this.opcaoEnvelhecido = new System.Windows.Forms.Button();
             this.opcaoImportar = new System.Windows.Forms.Button();
             this.opcaoSalvar = new System.Windows.Forms.Button();
             this.lbOriginal = new System.Windows.Forms.Label();
@@ -102,14 +102,15 @@
             this.opcaoNegativo.UseVisualStyleBackColor = true;
             this.opcaoNegativo.Click += new System.EventHandler(this.OpcaoNegativo_Click);
             // 
-            // opcao4Cores
+            // opcaoEnvelhecido
             // 
-            this.opcao4Cores.Location = new System.Drawing.Point(414, 152);
-            this.opcao4Cores.Name = "opcao4Cores";
-            this.opcao4Cores.Size = new System.Drawing.Size(90, 29);
-            this.opcao4Cores.TabIndex = 6;
-            this.opcao4Cores.Text = "4 Cores";
-            this.opcao4Cores.UseVisualStyleBackColor = true;
+            this.opcaoEnvelhecido.Location = new System.Drawing.Point(414, 152);
+            this.opcaoEnvelhecido.Name = "opcaoEnvelhecido";
+            this.opcaoEnvelhecido.Size = new System.Drawing.Size(90, 29);
+            this.opcaoEnvelhecido.TabIndex = 6;
+            this.opcaoEnvelhecido.Text = "Envelhecido";
+            this.opcaoEnvelhecido.UseVisualStyleBackColor = true;
+            this.opcaoEnvelhecido.Click += new System.EventHandler(this.OpcaoEnvelhecido_Click);
             // 
             // opcaoImportar
             // 
@@ -171,7 +172,7 @@
             this.Controls.Add(this.lbOriginal);
             this.Controls.Add(this.opcaoImportar);
             this.Controls.Add(this.opcaoSalvar);
-            this.Controls.Add(this.opcao4Cores);
+            this.Controls.Add(this.opcaoEnvelhecido);
             this.Controls.Add(this.opcaoEspelhar);
             this.Controls.Add(this.opcaoNegativo);
             this.Controls.Add(this.opcaoSepia);
@@ -195,7 +196,7 @@
         private System.Windows.Forms.Button opcaoSepia;
         private System.Windows.Forms.Button opcaoEspelhar;
         private System.Windows.Forms.Button opcaoNegativo;
-        private System.Windows.Forms.Button opcao4Cores;
+        private System.Windows.Forms.Button opcaoEnvelhecido;
         private System.Windows.Forms.Button opcaoImportar;
         private System.Windows.Forms.Button opcaoSalvar;
         private System.Windows.Forms.Label lbOriginal;
