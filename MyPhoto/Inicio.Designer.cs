@@ -42,6 +42,7 @@
             this.opcaoLimparOriginal = new System.Windows.Forms.Button();
             this.opcaoLimparEditada = new System.Windows.Forms.Button();
             this.opcaoBlur = new System.Windows.Forms.Button();
+            this.easterEgg = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.imagemOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagemEditada)).BeginInit();
             this.SuspendLayout();
@@ -183,11 +184,23 @@
             this.opcaoBlur.Text = "Blur";
             this.opcaoBlur.UseVisualStyleBackColor = true;
             // 
+            // easterEgg
+            // 
+            this.easterEgg.AutoSize = true;
+            this.easterEgg.Location = new System.Drawing.Point(9, 484);
+            this.easterEgg.Name = "easterEgg";
+            this.easterEgg.Size = new System.Drawing.Size(312, 13);
+            this.easterEgg.TabIndex = 15;
+            this.easterEgg.TabStop = true;
+            this.easterEgg.Text = "Copyright © 2019 Mygle Company - Todos os direitos reservados";
+            this.easterEgg.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.EasterEgg_MouseDoubleClick);
+            // 
             // MyPhoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 473);
+            this.ClientSize = new System.Drawing.Size(916, 506);
+            this.Controls.Add(this.easterEgg);
             this.Controls.Add(this.opcaoBlur);
             this.Controls.Add(this.opcaoLimparEditada);
             this.Controls.Add(this.opcaoLimparOriginal);
@@ -227,6 +240,7 @@
         private System.Windows.Forms.Button opcaoLimparOriginal;
         private System.Windows.Forms.Button opcaoLimparEditada;
         private System.Windows.Forms.Button opcaoBlur;
+        private System.Windows.Forms.LinkLabel easterEgg;
     }
 }
 

@@ -295,5 +295,29 @@ namespace MyPhoto
                 }
             }
         }
+
+        private void EasterEgg_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (imagemOriginal.Image == null)
+            {
+                MessageBox.Show("Você não importou uma imagem.");
+            }
+
+            else
+            {
+                Bitmap imagemFundo = new Bitmap(imagemOriginal.Image);
+                Bitmap efeitoPascoa = new Bitmap(@"../../Imagens/molduraPascoa.png");
+                Bitmap imagemPascoa = new Bitmap(imagemFundo.Width, imagemFundo.Height);
+                Bitmap efeitoPascoaAjustado = new Bitmap(efeitoPascoa, new Size(imagemFundo.Width, imagemFundo.Height));
+
+                using (Graphics gr = Graphics.FromImage(imagemPascoa))
+                {
+                    gr.DrawImage(imagemFundo, new Point(0, 0));
+                    gr.DrawImage(efeitoPascoaAjustado, new Point(0, 0));
+                }
+
+                imagemEditada.Image = imagemPascoa;
+            }
+        }
     }
 }
