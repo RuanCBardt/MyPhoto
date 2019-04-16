@@ -39,7 +39,9 @@
             this.opcaoSalvar = new System.Windows.Forms.Button();
             this.lbOriginal = new System.Windows.Forms.Label();
             this.lbEditada = new System.Windows.Forms.Label();
-            this.opcaoLimpar = new System.Windows.Forms.Button();
+            this.opcaoLimparOriginal = new System.Windows.Forms.Button();
+            this.opcaoLimparEditada = new System.Windows.Forms.Button();
+            this.opcaoBlur = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imagemOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagemEditada)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +76,7 @@
             // 
             // opcaoSepia
             // 
-            this.opcaoSepia.Location = new System.Drawing.Point(414, 47);
+            this.opcaoSepia.Location = new System.Drawing.Point(414, 117);
             this.opcaoSepia.Name = "opcaoSepia";
             this.opcaoSepia.Size = new System.Drawing.Size(90, 29);
             this.opcaoSepia.TabIndex = 3;
@@ -84,7 +86,7 @@
             // 
             // opcaoEspelhar
             // 
-            this.opcaoEspelhar.Location = new System.Drawing.Point(414, 117);
+            this.opcaoEspelhar.Location = new System.Drawing.Point(414, 187);
             this.opcaoEspelhar.Name = "opcaoEspelhar";
             this.opcaoEspelhar.Size = new System.Drawing.Size(90, 29);
             this.opcaoEspelhar.TabIndex = 5;
@@ -94,7 +96,7 @@
             // 
             // opcaoNegativo
             // 
-            this.opcaoNegativo.Location = new System.Drawing.Point(414, 82);
+            this.opcaoNegativo.Location = new System.Drawing.Point(414, 47);
             this.opcaoNegativo.Name = "opcaoNegativo";
             this.opcaoNegativo.Size = new System.Drawing.Size(90, 29);
             this.opcaoNegativo.TabIndex = 4;
@@ -114,7 +116,7 @@
             // 
             // opcaoImportar
             // 
-            this.opcaoImportar.Location = new System.Drawing.Point(414, 355);
+            this.opcaoImportar.Location = new System.Drawing.Point(175, 435);
             this.opcaoImportar.Name = "opcaoImportar";
             this.opcaoImportar.Size = new System.Drawing.Size(90, 29);
             this.opcaoImportar.TabIndex = 8;
@@ -136,7 +138,7 @@
             // 
             this.lbOriginal.AutoSize = true;
             this.lbOriginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOriginal.Location = new System.Drawing.Point(123, 433);
+            this.lbOriginal.Location = new System.Drawing.Point(6, 433);
             this.lbOriginal.Name = "lbOriginal";
             this.lbOriginal.Size = new System.Drawing.Size(107, 31);
             this.lbOriginal.TabIndex = 9;
@@ -146,28 +148,49 @@
             // 
             this.lbEditada.AutoSize = true;
             this.lbEditada.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEditada.Location = new System.Drawing.Point(684, 433);
+            this.lbEditada.Location = new System.Drawing.Point(549, 433);
             this.lbEditada.Name = "lbEditada";
             this.lbEditada.Size = new System.Drawing.Size(106, 31);
             this.lbEditada.TabIndex = 10;
             this.lbEditada.Text = "Editada";
             // 
-            // opcaoLimpar
+            // opcaoLimparOriginal
             // 
-            this.opcaoLimpar.Location = new System.Drawing.Point(414, 390);
-            this.opcaoLimpar.Name = "opcaoLimpar";
-            this.opcaoLimpar.Size = new System.Drawing.Size(90, 29);
-            this.opcaoLimpar.TabIndex = 11;
-            this.opcaoLimpar.Text = "Limpar";
-            this.opcaoLimpar.UseVisualStyleBackColor = true;
-            this.opcaoLimpar.Click += new System.EventHandler(this.OpcaoLimpar_Click);
+            this.opcaoLimparOriginal.Location = new System.Drawing.Point(271, 435);
+            this.opcaoLimparOriginal.Name = "opcaoLimparOriginal";
+            this.opcaoLimparOriginal.Size = new System.Drawing.Size(90, 29);
+            this.opcaoLimparOriginal.TabIndex = 11;
+            this.opcaoLimparOriginal.Text = "Limpar";
+            this.opcaoLimparOriginal.UseVisualStyleBackColor = true;
+            this.opcaoLimparOriginal.Click += new System.EventHandler(this.OpcaoLimparOriginal_Click);
+            // 
+            // opcaoLimparEditada
+            // 
+            this.opcaoLimparEditada.Location = new System.Drawing.Point(718, 432);
+            this.opcaoLimparEditada.Name = "opcaoLimparEditada";
+            this.opcaoLimparEditada.Size = new System.Drawing.Size(90, 29);
+            this.opcaoLimparEditada.TabIndex = 12;
+            this.opcaoLimparEditada.Text = "Limpar";
+            this.opcaoLimparEditada.UseVisualStyleBackColor = true;
+            this.opcaoLimparEditada.Click += new System.EventHandler(this.OpcaoLimparEditada_Click);
+            // 
+            // opcaoBlur
+            // 
+            this.opcaoBlur.Location = new System.Drawing.Point(414, 82);
+            this.opcaoBlur.Name = "opcaoBlur";
+            this.opcaoBlur.Size = new System.Drawing.Size(90, 29);
+            this.opcaoBlur.TabIndex = 13;
+            this.opcaoBlur.Text = "Blur";
+            this.opcaoBlur.UseVisualStyleBackColor = true;
             // 
             // MyPhoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 473);
-            this.Controls.Add(this.opcaoLimpar);
+            this.Controls.Add(this.opcaoBlur);
+            this.Controls.Add(this.opcaoLimparEditada);
+            this.Controls.Add(this.opcaoLimparOriginal);
             this.Controls.Add(this.lbEditada);
             this.Controls.Add(this.lbOriginal);
             this.Controls.Add(this.opcaoImportar);
@@ -201,7 +224,9 @@
         private System.Windows.Forms.Button opcaoSalvar;
         private System.Windows.Forms.Label lbOriginal;
         private System.Windows.Forms.Label lbEditada;
-        private System.Windows.Forms.Button opcaoLimpar;
+        private System.Windows.Forms.Button opcaoLimparOriginal;
+        private System.Windows.Forms.Button opcaoLimparEditada;
+        private System.Windows.Forms.Button opcaoBlur;
     }
 }
 
