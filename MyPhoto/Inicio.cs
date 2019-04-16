@@ -283,7 +283,7 @@ namespace MyPhoto
             }
         }
 
-        private void EasterEgg_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void Label1_DoubleClick(object sender, EventArgs e)
         {
             if (imagemOriginal.Image == null)
             {
@@ -305,11 +305,6 @@ namespace MyPhoto
 
                 imagemEditada.Image = imagemPascoa;
             }
-        }
-
-        private void EasterEgg_MouseClick(object sender, MouseEventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://www.microsoft.com");
         }
 
         private void OpcaoSalvar_Click(object sender, EventArgs e)
@@ -336,5 +331,7 @@ namespace MyPhoto
                 }
             }
         }
+
+        
     }
 }
