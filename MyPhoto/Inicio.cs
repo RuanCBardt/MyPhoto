@@ -22,7 +22,7 @@ namespace MyPhoto
         {
             OpenFileDialog importarfoto = new OpenFileDialog();
             importarfoto.Title = "Selecione sua Imagem";
-            importarfoto.Filter = "Tipo de Arquivo (*.jpg; *.jpeg; *.bmp;) | *.jpg; *.jpeg; *.bmp;";
+            importarfoto.Filter = "Tipo de Arquivo (*.jpg; *.jpeg; *.bmp; *.png; *.gif;) | *.jpg; *.jpeg; *.bmp; *.png; *.gif;";
 
             if (importarfoto.ShowDialog() == DialogResult.OK)
             {
@@ -154,8 +154,31 @@ namespace MyPhoto
             else
             {
                 Bitmap imagemBlur = new Bitmap(imagemOriginal.Image);
-                
 
+                int largura = imagemBlur.Width;
+                int altura = imagemBlur.Height;
+
+                for (int y = 1; y < altura-1; y++)
+                {
+                    for (int x = 1; x < largura-1; x++)
+                    {
+                        Color c = imagemBlur.GetPixel(y, x);
+                        Color n =  imagemBlur.GetPixel(y - 1, x);
+                        Color s =  imagemBlur.GetPixel(y + 1, x);
+                        Color o =  imagemBlur.GetPixel(y, x - 1);
+                        Color l =  imagemBlur.GetPixel(y, x + 1);
+                        Color no = imagemBlur.GetPixel(y - 1, x - 1);
+                        Color so = imagemBlur.GetPixel(y + 1, x - 1);
+                        Color ne = imagemBlur.GetPixel(y - 1, x + 1);
+                        Color se = imagemBlur.GetPixel(y + 1, x + 1);
+                        
+                        int avgR = (int)((n.R + s.R + o.R + l.R + no.R + so.R + ne.R + se.R + c.R) / 9);
+                        int avgG = (int)((n.G + s.G + o.G + l.G + no.G + so.G + ne.G + se.G + c.R) / 9);
+                        int avgB = (int)((n.B + s.B + o.B + l.B + no.B + so.B + ne.B + se.B + c.R) / 9);
+
+                        imagemBlur.SetPixel(y, x, Color.FromArgb(avgR, avgG, avgB));
+                    }
+                }
 
                 imagemEditada.Image = imagemBlur;
             }
