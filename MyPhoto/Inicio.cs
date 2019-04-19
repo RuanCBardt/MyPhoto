@@ -157,20 +157,21 @@ namespace MyPhoto
 
                 int largura = imagemBlur.Width;
                 int altura = imagemBlur.Height;
+                int quantBlur = 10;
 
-                for (int y = 1; y < altura-1; y++)
+                for (int y = quantBlur; y < largura- quantBlur; y++)
                 {
-                    for (int x = 1; x < largura-1; x++)
+                    for (int x = quantBlur; x < altura- quantBlur; x++)
                     {
                         Color c = imagemBlur.GetPixel(y, x);
-                        Color n =  imagemBlur.GetPixel(y - 1, x);
-                        Color s =  imagemBlur.GetPixel(y + 1, x);
-                        Color o =  imagemBlur.GetPixel(y, x - 1);
-                        Color l =  imagemBlur.GetPixel(y, x + 1);
-                        Color no = imagemBlur.GetPixel(y - 1, x - 1);
-                        Color so = imagemBlur.GetPixel(y + 1, x - 1);
-                        Color ne = imagemBlur.GetPixel(y - 1, x + 1);
-                        Color se = imagemBlur.GetPixel(y + 1, x + 1);
+                        Color n =  imagemBlur.GetPixel(y - quantBlur, x);
+                        Color s =  imagemBlur.GetPixel(y + quantBlur, x);
+                        Color o =  imagemBlur.GetPixel(y, x - quantBlur);
+                        Color l =  imagemBlur.GetPixel(y, x + quantBlur);
+                        Color no = imagemBlur.GetPixel(y - quantBlur, x - quantBlur);
+                        Color so = imagemBlur.GetPixel(y + quantBlur, x - quantBlur);
+                        Color ne = imagemBlur.GetPixel(y - quantBlur, x + quantBlur);
+                        Color se = imagemBlur.GetPixel(y + quantBlur, x + quantBlur);
                         
                         int avgR = (int)((n.R + s.R + o.R + l.R + no.R + so.R + ne.R + se.R + c.R) / 9);
                         int avgG = (int)((n.G + s.G + o.G + l.G + no.G + so.G + ne.G + se.G + c.R) / 9);
