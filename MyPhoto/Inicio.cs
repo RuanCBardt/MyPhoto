@@ -44,7 +44,6 @@ namespace MyPhoto
                 imagemOriginal.Image.Dispose();
                 imagemOriginal.Image = null;
             }
-            
         }
 
         private void OpcaoLimparEditada_Click(object sender, EventArgs e)
@@ -60,7 +59,6 @@ namespace MyPhoto
                 imagemEditada.Image.Dispose();
                 imagemEditada.Image = null;
             }
-            
         }
 
         private void OpcaoPretoBranco_Click(object sender, EventArgs e)
@@ -85,14 +83,13 @@ namespace MyPhoto
                     {
                         pixel = imagemPretoBranco.GetPixel(x, y);
 
-                        int a = pixel.A;
                         int r = pixel.R;
                         int g = pixel.G;
                         int b = pixel.B;
 
-                        int avg = (r + g + b) / 3;
+                        int mediaRGB = (r + g + b) / 3;
 
-                        imagemPretoBranco.SetPixel(x, y, Color.FromArgb(a, avg, avg, avg));
+                        imagemPretoBranco.SetPixel(x, y, Color.FromArgb(mediaRGB, mediaRGB, mediaRGB));
                     }
                 }
 
@@ -120,7 +117,6 @@ namespace MyPhoto
                     {
                         Color pixel = imagemNegativo.GetPixel(x, y);
 
-                        int a = pixel.A;
                         int r = pixel.R;
                         int g = pixel.G;
                         int b = pixel.B;
@@ -129,20 +125,13 @@ namespace MyPhoto
                         g = 255 - g;
                         b = 255 - b;
 
-                        imagemNegativo.SetPixel(x, y, Color.FromArgb(a, r, g, b));
+                        imagemNegativo.SetPixel(x, y, Color.FromArgb(r, g, b));
                     }
                 }
 
                 imagemEditada.Image = imagemNegativo;
             }
         }
-
-        /* 
-         * ESTÁ DANDO ERRO NO BLUR
-         * ESTÁ DANDO ERRO NO BLUR
-         * ESTÁ DANDO ERRO NO BLUR
-         * ESTÁ DANDO ERRO NO BLUR
-         */
 
         private void OpcaoBlur_Click(object sender, EventArgs e)
         {
@@ -173,11 +162,11 @@ namespace MyPhoto
                         Color ne = imagemBlur.GetPixel(y - quantBlur, x + quantBlur);
                         Color se = imagemBlur.GetPixel(y + quantBlur, x + quantBlur);
                         
-                        int avgR = (int)((n.R + s.R + o.R + l.R + no.R + so.R + ne.R + se.R + c.R) / 9);
-                        int avgG = (int)((n.G + s.G + o.G + l.G + no.G + so.G + ne.G + se.G + c.R) / 9);
-                        int avgB = (int)((n.B + s.B + o.B + l.B + no.B + so.B + ne.B + se.B + c.R) / 9);
+                        int mediaR = (int)((n.R + s.R + o.R + l.R + no.R + so.R + ne.R + se.R + c.R) / 9);
+                        int mediaG = (int)((n.G + s.G + o.G + l.G + no.G + so.G + ne.G + se.G + c.R) / 9);
+                        int mediaB = (int)((n.B + s.B + o.B + l.B + no.B + so.B + ne.B + se.B + c.R) / 9);
 
-                        imagemBlur.SetPixel(y, x, Color.FromArgb(avgR, avgG, avgB));
+                        imagemBlur.SetPixel(y, x, Color.FromArgb(mediaR, mediaG, mediaB));
                     }
                 }
 
@@ -207,7 +196,6 @@ namespace MyPhoto
                     {
                         pixel = imagemSepia.GetPixel(x, y);
 
-                        int a = pixel.A;
                         int r = pixel.R;
                         int g = pixel.G;
                         int b = pixel.B;
@@ -243,13 +231,12 @@ namespace MyPhoto
                             b = tb;
                         }
 
-                        imagemSepia.SetPixel(x, y, Color.FromArgb(a, r, g, b));
+                        imagemSepia.SetPixel(x, y, Color.FromArgb(r, g, b));
                     }
                 }
 
                 imagemEditada.Image = imagemSepia;
             }
-            
         }
 
         private void OpcaoEnvelhecido_Click(object sender, EventArgs e)
@@ -270,6 +257,10 @@ namespace MyPhoto
                 {
                     gr.DrawImage(imagemFundo, new Point(0, 0));
                     gr.DrawImage(efeitoEnvelhecidoAjustado, new Point(0, 0));
+                    /*
+                    gr.DrawImage(imagemFundo, new Point(0, 0));
+                    gr.DrawImage(efeitoEnvelhecidoAjustado, new Point(0, 0));
+                    */
                 }
 
                 imagemEditada.Image = imagemEnvelhecida;
@@ -347,7 +338,7 @@ namespace MyPhoto
             {
                 SaveFileDialog salvarfoto = new SaveFileDialog();
                 salvarfoto.Title = "Salvar imagem como";
-                salvarfoto.Filter = "Tipo de Arquivo (*.jpg; *.jpeg; *.bmp;) | *.jpg; *.jpeg; *.bmp;";
+                salvarfoto.Filter = "Tipo de Arquivo (*.jpg; *.jpeg; *.bmp; *.png; *.gif;) | *.jpg; *.jpeg; *.bmp; *.png; *.gif;";
 
                 if (salvarfoto.ShowDialog() == DialogResult.OK)
                 {
@@ -355,7 +346,5 @@ namespace MyPhoto
                 }
             }
         }
-
-        
     }
 }
